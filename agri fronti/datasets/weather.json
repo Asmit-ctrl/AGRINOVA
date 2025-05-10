@@ -1,0 +1,245 @@
+{
+  "city": "Chicago",
+  "forecast": [
+    {
+      "date": "2025-04-25 00:00:00",
+      "temp": 19.95,
+      "condition": "scattered clouds",
+      "icon": "https://openweathermap.org/img/wn/03d.png"
+    },
+    {
+      "date": "2025-04-25 03:00:00",
+      "temp": 17.35,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-25 06:00:00",
+      "temp": 12.52,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-25 09:00:00",
+      "temp": 7.91,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-25 12:00:00",
+      "temp": 11.9,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-25 15:00:00",
+      "temp": 12.33,
+      "condition": "light rain",
+      "icon": "https://openweathermap.org/img/wn/10d.png"
+    },
+    {
+      "date": "2025-04-25 18:00:00",
+      "temp": 14.85,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-25 21:00:00",
+      "temp": 13.93,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-26 00:00:00",
+      "temp": 9.63,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-26 03:00:00",
+      "temp": 7.72,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-26 06:00:00",
+      "temp": 6.83,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-26 09:00:00",
+      "temp": 5.9,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-26 12:00:00",
+      "temp": 5.14,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-26 15:00:00",
+      "temp": 7.41,
+      "condition": "scattered clouds",
+      "icon": "https://openweathermap.org/img/wn/03d.png"
+    },
+    {
+      "date": "2025-04-26 18:00:00",
+      "temp": 7.82,
+      "condition": "few clouds",
+      "icon": "https://openweathermap.org/img/wn/02d.png"
+    },
+    {
+      "date": "2025-04-26 21:00:00",
+      "temp": 7.76,
+      "condition": "clear sky",
+      "icon": "https://openweathermap.org/img/wn/01d.png"
+    },
+    {
+      "date": "2025-04-27 00:00:00",
+      "temp": 6.52,
+      "condition": "clear sky",
+      "icon": "https://openweathermap.org/img/wn/01d.png"
+    },
+    {
+      "date": "2025-04-27 03:00:00",
+      "temp": 5.31,
+      "condition": "clear sky",
+      "icon": "https://openweathermap.org/img/wn/01n.png"
+    },
+    {
+      "date": "2025-04-27 06:00:00",
+      "temp": 4.91,
+      "condition": "few clouds",
+      "icon": "https://openweathermap.org/img/wn/02n.png"
+    },
+    {
+      "date": "2025-04-27 09:00:00",
+      "temp": 4.58,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-27 12:00:00",
+      "temp": 5.54,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-27 15:00:00",
+      "temp": 11.37,
+      "condition": "clear sky",
+      "icon": "https://openweathermap.org/img/wn/01d.png"
+    },
+    {
+      "date": "2025-04-27 18:00:00",
+      "temp": 16.39,
+      "condition": "few clouds",
+      "icon": "https://openweathermap.org/img/wn/02d.png"
+    },
+    {
+      "date": "2025-04-27 21:00:00",
+      "temp": 18.2,
+      "condition": "clear sky",
+      "icon": "https://openweathermap.org/img/wn/01d.png"
+    },
+    {
+      "date": "2025-04-28 00:00:00",
+      "temp": 17.22,
+      "condition": "few clouds",
+      "icon": "https://openweathermap.org/img/wn/02d.png"
+    },
+    {
+      "date": "2025-04-28 03:00:00",
+      "temp": 15.85,
+      "condition": "few clouds",
+      "icon": "https://openweathermap.org/img/wn/02n.png"
+    },
+    {
+      "date": "2025-04-28 06:00:00",
+      "temp": 14.25,
+      "condition": "clear sky",
+      "icon": "https://openweathermap.org/img/wn/01n.png"
+    },
+    {
+      "date": "2025-04-28 09:00:00",
+      "temp": 12.97,
+      "condition": "clear sky",
+      "icon": "https://openweathermap.org/img/wn/01n.png"
+    },
+    {
+      "date": "2025-04-28 12:00:00",
+      "temp": 12.98,
+      "condition": "scattered clouds",
+      "icon": "https://openweathermap.org/img/wn/03d.png"
+    },
+    {
+      "date": "2025-04-28 15:00:00",
+      "temp": 17.95,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-28 18:00:00",
+      "temp": 23.18,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-28 21:00:00",
+      "temp": 25.21,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-29 00:00:00",
+      "temp": 22.92,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-29 03:00:00",
+      "temp": 20.76,
+      "condition": "scattered clouds",
+      "icon": "https://openweathermap.org/img/wn/03n.png"
+    },
+    {
+      "date": "2025-04-29 06:00:00",
+      "temp": 20.65,
+      "condition": "broken clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-29 09:00:00",
+      "temp": 21.06,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04n.png"
+    },
+    {
+      "date": "2025-04-29 12:00:00",
+      "temp": 20.53,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-29 15:00:00",
+      "temp": 22.17,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-29 18:00:00",
+      "temp": 21.29,
+      "condition": "overcast clouds",
+      "icon": "https://openweathermap.org/img/wn/04d.png"
+    },
+    {
+      "date": "2025-04-29 21:00:00",
+      "temp": 23.32,
+      "condition": "scattered clouds",
+      "icon": "https://openweathermap.org/img/wn/03d.png"
+    }
+  ]
+}

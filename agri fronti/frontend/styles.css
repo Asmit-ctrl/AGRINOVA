@@ -1,0 +1,172 @@
+/* General Styles */
+.hidden {
+  display: none;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 16rem;
+  background-color: white;
+  height: 100vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.menu-item {
+  margin-bottom: 1rem;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  color: #4a5568;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.menu-link i {
+  margin-right: 0.75rem;
+}
+
+.menu-link:hover {
+  color: #38a169;
+}
+
+.menu-link.active {
+  color: #38a169;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+input:focus {
+  outline: none;
+  ring: 2px solid #38a169;
+}
+
+button:hover {
+  background-color: #2f855a;
+}
+
+button {
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Card Styles */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+#taskModal {
+  z-index: 1000;
+}
+
+/* Removed dark theme styles from the dashboard */
+body {
+  background: #f9f9f9;
+  color: #1f2937;
+}
+
+/* Ensure default light theme styles */
+.bg-white {
+  background: white;
+  color: #1f2937;
+}
+
+.border {
+  border-color: #e5e7eb;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
+.bg-green-500 {
+  background: #10b981;
+}
+
+.bg-gray-200 {
+  background: #e5e7eb;
+}
+
+.hover\:bg-green-600:hover {
+  background: #059669;
+}
+
+.hover\:bg-gray-600:hover {
+  background: #4b5563;
+}
+
+/* Load More Button */
+#loadMoreTasks {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+#loadMoreTasks:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}

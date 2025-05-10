@@ -1,0 +1,26 @@
+{
+  "revenueTrends": [
+    { "month": "January", "revenue": 20000 },
+    { "month": "February", "revenue": 25000 },
+    { "month": "March", "revenue": 30000 },
+    { "month": "April", "revenue": 28000 },
+    { "month": "May", "revenue": 32000 }
+  ],
+  "cropYieldAnalysis": [
+    { "crop": "Corn", "yield": 150 },
+    { "crop": "Wheat", "yield": 120 },
+    { "crop": "Rice", "yield": 200 }
+  ],
+  "equipmentUsage": [
+    { "equipment": "Tractor A", "usageHours": 120 },
+    { "equipment": "Harvester B", "usageHours": 90 },
+    { "equipment": "Seeder C", "usageHours": 60 }
+  ],
+  "waterUsageTrends": [
+    { "month": "January", "usage": 10000 },
+    { "month": "February", "usage": 12000 },
+    { "month": "March", "usage": 15000 },
+    { "month": "April", "usage": 14000 },
+    { "month": "May", "usage": 16000 }
+  ]
+}

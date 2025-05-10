@@ -1,0 +1,37 @@
+{
+  "overview": {
+    "total": 15,
+    "operational": 13,
+    "underMaintenance": 2,
+    "idle": 1
+  },
+  "maintenanceSchedule": [
+    {
+      "equipment": "Tractor A",
+      "nextMaintenance": "2024-09-12",
+      "status": "Scheduled"
+    },
+    {
+      "equipment": "Harvester B",
+      "nextMaintenance": "2024-09-18",
+      "status": "Pending"
+    }
+  ],
+  "maintenanceHistory": [
+    {
+      "equipment": "Tractor A",
+      "lastMaintenance": "2024-08-05",
+      "details": "Engine Check, Hydraulic Fluid Replacement"
+    },
+    {
+      "equipment": "Harvester B",
+      "lastMaintenance": "2024-07-20",
+      "details": "Belt Replacement, Engine Oil Change"
+    }
+  ],
+  "recommendations": [
+    "Schedule maintenance for Seeder D to maintain peak performance.",
+    "Replace the air filter of Tractor A to improve fuel efficiency.",
+    "Inspect the hydraulic system of Harvester B before the next harvest."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "weather": {
+    "city": "New York",
+    "current": { "temp": 28, "condition": "Sunny", "feels_like": 30 },
+    "forecast": [
+      { "day": "Monday", "temp": 28, "condition": "Sunny" },
+      { "day": "Tuesday", "temp": 26, "condition": "Partly Cloudy" },
+      { "day": "Wednesday", "temp": 29, "condition": "Rainy" }
+    ]
+  },
+  "tasks": [
+    { "id": 1, "name": "Planting", "assignedTo": "Alice", "dueDate": "2024-10-01", "status": "Pending" },
+    { "id": 2, "name": "Weeding", "assignedTo": "Bob", "dueDate": "2024-10-05", "status": "In Progress" },
+    { "id": 3, "name": "Harvesting", "assignedTo": "Charlie", "dueDate": "2024-10-10", "status": "Completed" },
+    { "id": 4, "name": "Soil Testing", "assignedTo": "Diana", "dueDate": "2024-10-15", "status": "Pending" }
+  ],
+  "equipment": {
+    "total": 20,
+    "operational": 18,
+    "underMaintenance": 2,
+    "idle": 0
+  }
+}

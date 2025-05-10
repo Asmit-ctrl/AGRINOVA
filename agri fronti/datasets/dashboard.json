@@ -1,0 +1,13 @@
+{
+  "totalLandArea": 1500,
+  "landAreaChange": "+10.25%",
+  "revenue": 60000,
+  "revenueChange": "+15.30%",
+  "monthlyYield": [
+    { "month": "January", "yield": 220 },
+    { "month": "February", "yield": 270 },
+    { "month": "March", "yield": 310 },
+    { "month": "April", "yield": 300 },
+    { "month": "May", "yield": 350 }
+  ]
+}

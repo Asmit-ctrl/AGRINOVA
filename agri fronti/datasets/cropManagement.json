@@ -1,0 +1,82 @@
+{
+  "totalCrops": 3,
+  "currentYield": 1200,
+  "growthStatus": "Healthy",
+  "upcomingHarvests": [
+    { "crop": "Corn", "date": "2024-09-20" },
+    { "crop": "Wheat", "date": "2024-10-15" },
+    { "crop": "Rice", "date": "2024-11-10" }
+  ],
+  "cropGrowthMonitoring": [
+    { "day": 1, "Corn": 10, "Wheat": 8, "Rice": 12 },
+    { "day": 2, "Corn": 20, "Wheat": 18, "Rice": 22 },
+    { "day": 3, "Corn": 30, "Wheat": 28, "Rice": 32 },
+    { "day": 4, "Corn": 40, "Wheat": 38, "Rice": 42 },
+    { "day": 5, "Corn": 50, "Wheat": 48, "Rice": 52 }
+  ],
+  "cropDetails": [
+    {
+      "name": "Corn",
+      "totalArea": "500 acres",
+      "yieldPerAcre": "150 bushels",
+      "growthStages": [
+        { "stage": "Germination", "duration": "7 days" },
+        { "stage": "Vegetative", "duration": "30 days" },
+        { "stage": "Reproductive", "duration": "40 days" }
+      ],
+      "pests": ["Corn Borer", "Armyworm"],
+      "diseases": ["Gray Leaf Spot", "Northern Corn Leaf Blight"]
+    },
+    {
+      "name": "Wheat",
+      "totalArea": "400 acres",
+      "yieldPerAcre": "60 bushels",
+      "growthStages": [
+        { "stage": "Germination", "duration": "10 days" },
+        { "stage": "Tillering", "duration": "20 days" },
+        { "stage": "Heading", "duration": "30 days" }
+      ],
+      "pests": ["Hessian Fly", "Aphids"],
+      "diseases": ["Rust", "Powdery Mildew"]
+    },
+    {
+      "name": "Rice",
+      "totalArea": "300 acres",
+      "yieldPerAcre": "80 bushels",
+      "growthStages": [
+        { "stage": "Seedling", "duration": "15 days" },
+        { "stage": "Tillering", "duration": "25 days" },
+        { "stage": "Maturity", "duration": "35 days" }
+      ],
+      "pests": ["Rice Weevil", "Stem Borer"],
+      "diseases": ["Blast", "Sheath Blight"]
+    }
+  ],
+  "historicalData": {
+    "Corn": [
+      { "year": 2020, "yield": 700 },
+      { "year": 2021, "yield": 750 },
+      { "year": 2022, "yield": 800 }
+    ],
+    "Wheat": [
+      { "year": 2020, "yield": 500 },
+      { "year": 2021, "yield": 550 },
+      { "year": 2022, "yield": 600 }
+    ],
+    "Rice": [
+      { "year": 2020, "yield": 600 },
+      { "year": 2021, "yield": 650 },
+      { "year": 2022, "yield": 700 }
+    ]
+  },
+  "soilRequirements": {
+    "Corn": { "ph": "6.0-6.8", "moisture": "40-60%", "nutrients": "High Nitrogen" },
+    "Wheat": { "ph": "6.0-7.0", "moisture": "30-50%", "nutrients": "Moderate Nitrogen" },
+    "Rice": { "ph": "5.5-6.5", "moisture": "70-90%", "nutrients": "High Phosphorus" }
+  },
+  "waterUsage": {
+    "Corn": { "daily": "500 liters/acre", "monthly": "15,000 liters/acre" },
+    "Wheat": { "daily": "400 liters/acre", "monthly": "12,000 liters/acre" },
+    "Rice": { "daily": "800 liters/acre", "monthly": "24,000 liters/acre" }
+  }
+}

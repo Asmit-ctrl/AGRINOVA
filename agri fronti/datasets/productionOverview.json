@@ -1,0 +1,16 @@
+{
+  "monthlyProduction": [
+    { "month": "January", "production": 120 },
+    { "month": "February", "production": 150 },
+    { "month": "March", "production": 170 },
+    { "month": "April", "production": 200 },
+    { "month": "May", "production": 180 },
+    { "month": "June", "production": 160 },
+    { "month": "July", "production": 190 },
+    { "month": "August", "production": 210 },
+    { "month": "September", "production": 220 },
+    { "month": "October", "production": 230 },
+    { "month": "November", "production": 240 },
+    { "month": "December", "production": 250 }
+  ]
+}

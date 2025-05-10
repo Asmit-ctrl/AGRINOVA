@@ -1,0 +1,1648 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>AgriNova Dashboard</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #000000; /* Change default text color to black */
+      background: linear-gradient(135deg, #1e3c72, #2a5298, #6dd5ed, #2193b0);
+      background-size: 400% 400%;
+      animation: gradientBackground 12s ease infinite;
+    }
+
+    @keyframes gradientBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 0.8s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+
+    input:focus {
+      outline: none;
+      ring: 2px solid #38a169; /* Tailwind green-500 */
+    }
+
+    button:hover {
+      background-color: #2f855a; /* Tailwind green-600 */
+      transform: scale(1.05);
+    }
+
+    button {
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      color: #1a202c; /* Dark text color for better contrast */
+      font-weight: 600; /* Increased font weight for better readability */
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .button-premium {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    .button-premium:hover {
+      background: linear-gradient(to right, #2575fc, #6a11cb);
+      transform: scale(1.05);
+    }
+
+    .input-premium {
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .input-premium:focus {
+      border-color: #6a11cb;
+      outline: none;
+      box-shadow: 0 0 8px rgba(106, 17, 203, 0.4);
+    }
+
+    .adjustable-text {
+      color: var(--text-color, #f8f9fa); /* Use CSS variable for adjustable text color */
+      transition: color 0.3s ease-in-out;
+    }
+
+    .adjustable-text-dark {
+      --text-color: #1a202c; /* Dark text color for light backgrounds */
+    }
+
+    .adjustable-text-light {
+      --text-color: #f8f9fa; /* Light text color for dark backgrounds */
+    }
+
+    h1, h2, h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      color: #000000; /* Change heading text color to black */
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+    }
+
+    .text-primary {
+      color: #2d3748; /* Adjusted primary text color for better contrast */
+    }
+
+    .text-secondary {
+      color: #718096; /* Slightly darker secondary text color */
+    }
+
+    .text-highlight {
+      color: #2b6cb0; /* Adjusted highlight color for better visibility */
+    }
+
+    /* Premium Banner */
+    .premium-banner {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* Call-to-Action Section */
+    .cta-section {
+      background: linear-gradient(135deg, #34d399, #10b981);
+      color: white;
+      padding: 40px;
+      text-align: center;
+      border-radius: 16px;
+      margin-top: 40px;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #ffffff; /* Ensure text in call-to-action section is visible */
+      font-weight: 700; /* Bold text for emphasis */
+    }
+
+    .cta-section button {
+      background: white;
+      color: #000000; /* Change button text color in call-to-action section to black */
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-weight: 700; /* Bold text for emphasis */
+    }
+
+    .cta-section button:hover {
+      background: #d1fae5;
+      transform: scale(1.05);
+      color: #10b981; /* Maintain contrast on hover */
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1a202c, #2d3748);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+      border-radius: 8px;
+    }
+
+    footer a {
+      color: #88f2d4;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ffffff;
+    }
+
+    .card h2, .card p, .card div {
+      color: #1a202c; /* Ensure all text inside cards is dark for visibility */
+    }
+
+    .bg-white {
+      color: #000000; /* Ensure text on white backgrounds is black */
+      font-weight: 600; /* Increased font weight */
+    }
+
+    .text-gray-500 {
+      color: #4a5568; /* Slightly darker gray for better contrast */
+    }
+
+    .text-gray-800 {
+      color: #2d3748; /* Darker gray for improved visibility */
+    }
+
+    footer p, footer a {
+      color: #ffffff; /* Change footer text color to black */
+      font-weight: 600; /* Increased font weight */
+    }
+
+    footer a:hover {
+      color: #88f2d4; /* Maintain contrast on hover */
+    }
+
+    /* Enhanced Fonts for Revenue Trends and Crop Yield Analysis */
+    .revenue-trends h2, .crop-yield-analysis h2 {
+      font-size: 2rem; /* Larger font size for headings */
+      font-weight: 700; /* Bold font for emphasis */
+      color: #2d3748; /* Darker color for better contrast */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    }
+
+    .revenue-trends p, .crop-yield-analysis p {
+      font-size: 1.125rem; /* Slightly larger font size for descriptions */
+      font-weight: 500; /* Medium font weight for readability */
+      color: #4a5568; /* Adjusted gray for better visibility */
+    }
+
+    /* Updated Font Colors for Revenue Trends and Crop Yield Analysis */
+    .revenue-trends h2, .crop-yield-analysis h2 {
+      color: #1a202c; /* Darker color for headings */
+    }
+
+    .revenue-trends p, .crop-yield-analysis p {
+      color: #2d3748; /* Slightly darker gray for descriptions */
+    }
+
+    /* Notification Styles */
+    .notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #38a169, #48bb78);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(-20px) translateX(-50%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .notification.show {
+      opacity: 1;
+      transform: translateY(0) translateX(-50%);
+    }
+
+    .notification.error {
+      background: linear-gradient(135deg, #e53e3e, #f56565);
+    }
+
+    /* Sidebar Enhancements */
+    nav ul li a {
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    nav ul li a:hover {
+      color: #38a169;
+      transform: translateX(5px);
+    }
+
+    /* Enhanced Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #38a169;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2f855a;
+    }
+
+    /* Accessibility Enhancements */
+    a:focus, button:focus {
+      outline: 2px solid #38a169;
+      outline-offset: 2px;
+    }
+
+    /* Pest Management Enhancements */
+    #pestManagementSection {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      border-radius: 16px;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    #pestManagementSection h1 {
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    #pestManagementSection .bg-white {
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #pestManagementSection .bg-white:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    #pestManagementSection select,
+    #pestManagementSection input {
+      color: black; /* Ensure user input text color is black */
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 2px solid #e53e3e;
+      border-radius: 8px;
+      padding: 10px;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    #pestManagementSection select:focus,
+    #pestManagementSection input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #e53e3e;
+      transform: scale(1.05);
+    }
+
+    #pestManagementSection button {
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #pestManagementSection button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Luxury Pest Management Enhancements */
+    #luxuryPestManagementSection {
+      background-image: linear-gradient(to top,  #11998e, #247345 100%);
+      border-radius: 16px;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    #luxuryPestManagementSection h1 {
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    #luxuryPestManagementSection .bg-white {
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #luxuryPestManagementSection .bg-white:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    #luxuryPestManagementSection select,
+    #luxuryPestManagementSection input {
+      color: black; /* Ensure user input text color is black */
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 2px solid #ff7e5f;
+      border-radius: 8px;
+      padding: 10px;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    #luxuryPestManagementSection select:focus,
+    #luxuryPestManagementSection input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #ff7e5f;
+      transform: scale(1.05);
+    }
+
+    #luxuryPestManagementSection button {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #luxuryPestManagementSection button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .text-white {
+      color: #000000 !important; /* Override white text color to black */
+    }
+
+    #chatbotSection .text-gray-500 {
+      color: #000000; /* Change chatbot section text color to black */
+    }
+
+    /* Specific headings styling */
+    #cropManagementSection h1,
+    #equipmentSection h1,
+    #reportsAnalyticsSection h1,
+    #settingsSection h1,
+    #chatbotSection h1 {
+      color: #ffffff; /* Change heading text color to white */
+    }
+
+    /* Glowing effect for specific headings */
+    #cropManagementSection h1,
+    #equipmentSection h1,
+    #reportsAnalyticsSection h1,
+    #settingsSection h1,
+    #chatbotSection h1,
+    #soilWaterSection h1 {
+      font-size: 2.5rem; /* Increase font size for emphasis */
+      color: #ffffff; /* Ensure text is white */
+      text-shadow: 0 0 8px #88f2d4, 0 0 16px #000000, 0 0 24px #000000; /* Glowing effect */
+    }
+
+    /* --- Chatbot Enhancements --- */
+    #chatbotSection .chatbot-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, #38a169 0%, #88f2d4 100%);
+      color: #fff;
+      padding: 16px 20px;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 2px 8px rgba(56,161,105,0.08);
+      margin-bottom: 0;
+    }
+    #chatbotSection .chatbot-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #38a169;
+      object-fit: cover;
+    }
+    #chatbotSection .chatbot-header .chatbot-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    #chatbotSection .chatbot-container {
+      background: linear-gradient(135deg, #f8fafc 60%, #e6fffa 100%);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 16px rgba(56,161,105,0.10);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 400px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    #chatWindow {
+      background: #fff;
+      border-radius: 0 0 12px 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+      padding: 18px 16px;
+      margin-bottom: 0;
+      height: 320px;
+      overflow-y: auto;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .chat-message {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 4px;
+      gap: 8px;
+    }
+    .chat-message.bot {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+    .chat-message.user {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    .chat-bubble {
+      padding: 10px 16px;
+      border-radius: 18px;
+      max-width: 75%;
+      word-break: break-word;
+      box-shadow: 0 1px 4px rgba(56,161,105,0.07);
+    }
+    .chat-message.bot .chat-bubble {
+      background: linear-gradient(90deg, #e6fffa 60%, #b9fbc0 100%);
+      color: #22543d;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-message.user .chat-bubble {
+      background: linear-gradient(90deg, #38a169 60%, #88f2d4 100%);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .chat-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #e6fffa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: 1.5px solid #38a169;
+    }
+    #typingIndicator {
+      margin-left: 8px;
+      margin-bottom: 6px;
+      color: #38a169;
+      font-style: italic;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #chatbotSection .chatbot-input-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px 14px 16px;
+      background: #f8fafc;
+      border-radius: 0 0 12px 12px;
+      border-top: 1px solid #e2e8f0;
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
+    }
+    #chatInput {
+      flex: 1;
+      border: 1.5px solid #38a169;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 1rem;
+      background: #fff;
+      color: #22543d;
+      transition: border 0.2s;
+    }
+    #chatInput:focus {
+      border: 2px solid #88f2d4;
+      outline: none;
+    }
+    #chatbotSection .chatbot-send-btn {
+      background: linear-gradient(90deg, #38a169 60%, #88f2d4 100%);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 10px 18px;
+      border: none;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 1px 4px rgba(56,161,105,0.08);
+    }
+    #chatbotSection .chatbot-send-btn:hover {
+      background: linear-gradient(90deg, #22543d 60%, #38a169 100%);
+      transform: scale(1.04);
+    }
+    @media (max-width: 640px) {
+      #chatbotSection .chatbot-container, #chatWindow {
+        max-width: 100%;
+        min-width: 0;
+        padding: 0;
+      }
+      #chatbotSection .chatbot-header {
+        padding: 12px 8px;
+      }
+      #chatbotSection .chatbot-input-area {
+        padding: 10px 8px;
+      }
+    }
+  </style>
+ </head>
+ <body class="min-h-screen adjustable-text-light" style="background: linear-gradient(135deg, #0a1814, #132f2e, #2b4453, #3c7363, #88f2d4, #b9fbc0);">
+  <div class="flex">
+   <!-- Sidebar -->
+   <div class="w-64 h-screen shadow-md" style="background-color: transparent;">
+    <div class="p-6">
+     <img alt="AgriNova Logo" class="mb-6" src="./image/agrinova logo.jpg" />
+     <nav>
+      <ul>
+       <li class="mb-4">
+        <a class="flex items-center text-green-600 font-semibold cursor-pointer adjustable-text" onclick="showSection('dashboardSection')">
+         <i class="fas fa-tachometer-alt mr-3"></i>
+         Dashboard
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('cropManagementSection')">
+         <i class="fas fa-seedling mr-3"></i>
+         Crop Management
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('weatherSection')">
+         <i class="fas fa-cloud-sun-rain mr-3"></i>
+         Weather
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('soilWaterSection')">
+         <i class="fas fa-water mr-3"></i>
+         Soil & Water
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('equipmentSection')">
+         <i class="fas fa-tools mr-3"></i>
+         Equipment
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('reportsAnalyticsSection')">
+         <i class="fas fa-chart-bar mr-3"></i>
+         Reports & Analytics
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('chatbotSection')">
+         <i class="fas fa-robot mr-3"></i>
+         Chatbot
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('luxuryPestManagementSection')">
+         <i class="fas fa-bug mr-3"></i>
+         Pest-Management
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('loanManagementSection')">
+          <i class="fas fa-hand-holding-usd mr-3"></i>
+          Loan Management
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('communitySection')">
+          <i class="fas fa-users mr-3"></i>
+          Community
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('iotDevicesSection')">
+          <i class="fas fa-microchip mr-3"></i>
+          IoT Devices
+        </a>
+       </li>
+       <li class="mb-4">
+        <a class="flex items-center text-green-500 cursor-pointer" onclick="showSection('settingsSection')">
+          <i class="fas fa-cog mr-3"></i>
+          Settings
+        </a>
+       </li>
+      </ul>
+     </nav>
+    </div>
+   </div>
+   <!-- Main Content -->
+   <div class="flex-1 p-6">
+    <!-- Dashboard Section -->
+    <div id="dashboardSection">
+     <div class="flex justify-between items-center mb-6">
+      <div class="flex items-center">
+       <input id="searchInput" class="input-premium w-80 adjustable-text" placeholder="Search something here..." type="text" oninput="searchContent()" />
+      </div>
+     </div>
+     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Weather Card -->
+      <div class="card p-6 col-span-1 lg:col-span-1 adjustable-text">
+       <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center">
+         <span class="bg-green-500 text-white px-3 py-1 rounded-full" id="currentCity">Chicago</span>
+         <span class="ml-2 text-gray-500">C</span>
+         <span class="ml-2 text-gray-500">F</span>
+        </div>
+        <div class="text-gray-500">Monday</div>
+       </div>
+       <div class="text-4xl font-semibold mb-2" id="currentTemp">24°C</div>
+       <div class="text-gray-500 mb-2">High: 27 Low: 10</div>
+       <div class="flex items-center">
+        <img alt="Cloudy Icon" class="mr-2" height="50" src="https://storage.googleapis.com/a1aa/image/8bjsWKubvMqwWtS9SUOo5DhVZ4hjysOfhzoza8gnVBU.jpg" width="50"/>
+        <div>
+         <div class="text-gray-800 font-semibold" id="currentCondition">Cloudy</div>
+         <div class="text-gray-500" id="currentFeelsLike">Feels like 26</div>
+        </div>
+       </div>
+      </div>
+      <!-- Production Overview Chart -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <h2 class="text-xl font-bold mb-4">Production Overview</h2>
+       <canvas id="productionOverviewChart"></canvas>
+      </div>
+      <!-- Total Land Area Card -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <div class="flex items-center justify-between mb-4">
+        <div class="text-primary font-semibold">Total Land Area</div>
+        <div class="text-secondary">This Month</div>
+       </div>
+       <div class="text-2xl font-semibold text-primary mb-2" id="totalLandArea">1,200 acres</div>
+       <div class="text-highlight" id="landAreaChange">+8.08% from last month</div>
+      </div>
+      <!-- Revenue Card -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <div class="flex items-center justify-between mb-4">
+        <div class="text-gray-800 font-semibold">Revenue</div>
+        <div class="text-gray-500">This Month</div>
+       </div>
+       <div class="text-2xl font-semibold mb-2" id="revenue">$50,000</div>
+       <div class="text-green-500 mb-4" id="revenueChange">+12.45% from last month</div>
+       <div>
+        <h2 class="text-xl font-bold mb-4">Revenue Trends</h2>
+        <p class="text-gray-500 mb-4">
+          This chart illustrates the revenue trends over the past months, helping to analyze financial performance.
+        </p>
+        <img src="http://localhost:5500/charts/revenueChart.png" alt="Revenue Chart" class="w-full h-auto" />
+      </div>
+      </div>
+      <!-- Monthly Yield Analysis Chart -->
+      <div class="card p-6 col-span-1 lg:col-span-2">
+       <h2 class="text-xl font-bold mb-4">Monthly Yield Analysis</h2>
+       <p class="text-gray-500 mb-4">This chart depicts the monthly yield trends for various crops, showing production levels over time. For example, Corn: 450 tons, Wheat: 300 tons, Rice: 200 tons.</p>
+       <img src="http://localhost:5500/charts/monthlyYieldChart.png" alt="Monthly Yield Chart" class="w-full h-auto" />
+      </div>
+      <!-- Corn Field Card -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <img alt="Corn Field Image" class="rounded-lg mb-4" height="150" src="https://storage.googleapis.com/a1aa/image/aLJeFUnj9bRBFYY0mE4_OvCNYsoKzH5rqPDthg6WGoo.jpg" width="300"/>
+       <div class="flex items-center justify-between mb-4">
+        <div class="text-gray-800 font-semibold">Corn Field</div>
+        <button class="bg-gray-200 text-gray-600 px-4 py-2 rounded-md">More Details</button>
+       </div>
+       <div class="flex justify-between">
+        <div>
+         <div class="text-gray-500">Crop Health</div>
+         <div class="text-gray-800 font-semibold">Good</div>
+        </div>
+        <div>
+         <div class="text-gray-500">Planting Date</div>
+         <div class="text-gray-800 font-semibold">16 March, 2024</div>
+        </div>
+        <div>
+         <div class="text-gray-500">Harvest Time</div>
+         <div class="text-gray-800 font-semibold">6 month</div>
+        </div>
+       </div>
+      </div>
+      <!-- Task Management Card -->
+      <div class="card p-6 col-span-1 lg:col-span-2">
+       <div class="flex items-center justify-between mb-4">
+        <div class="text-gray-800 font-semibold">Task Management</div>
+        <button class="bg-green-500 text-white px-4 py-2 rounded-md" onclick="openTaskModal()">Add New Task</button>
+       </div>
+       <div class="overflow-x-auto">
+        <table class="min-w-full bg-white">
+         <thead>
+          <tr>
+           <th class="py-2 px-4 border-b">Task Name</th>
+           <th class="py-2 px-4 border-b">Assigned To</th>
+           <th class="py-2 px-4 border-b">Due Date</th>
+           <th class="py-2 px-4 border-b">Status</th>
+          </tr>
+         </thead>
+         <tbody id="taskManagementTableBody">
+          <!-- Rows will be dynamically populated by fetchTasks -->
+         </tbody>
+        </table>
+       </div>
+       <button id="loadMoreTasks" class="hidden" onclick="loadMoreTasks()">Load More</button>
+      </div>
+      <!-- Add Task Modal -->
+      <div id="taskModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+       <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+        <h2 class="text-xl font-bold mb-4">Add New Task</h2>
+        <form id="taskForm">
+         <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2">Task Name</label>
+          <input type="text" id="taskName" class="w-full p-2 border rounded-lg" required />
+         </div>
+         <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2">Assigned To</label>
+          <input type="text" id="assignedTo" class="w-full p-2 border rounded-lg" required />
+         </div>
+         <div class="mb-4">
+          <label class="block text-gray-700 font-semibold mb-2">Due Date</label>
+          <input type="date" id="dueDate" class="w-full p-2 border rounded-lg" required />
+         </div>
+         <div class="flex justify-end">
+          <button type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg mr-2" onclick="closeTaskModal()">Cancel</button>
+          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg">Add Task</button>
+         </div>
+        </form>
+       </div>
+      </div>
+      <!-- Vegetable Harvest Summary Card -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <h2 class="text-xl font-bold mb-4">Vegetable Harvest Summary</h2>
+       <p class="text-gray-500 mb-4">This chart summarizes the harvest of various vegetables for the current season. For example, Tomatoes: 200 tons, Potatoes: 300 tons, Carrots: 150 tons.</p>
+       <canvas id="vegetableHarvestChart"></canvas>
+      </div>
+      <!-- Crop Yield Analysis Chart -->
+      <div class="card p-6 col-span-1 lg:col-span-2">
+       <h2 class="text-xl font-bold mb-4">Crop Yield Analysis</h2>
+       <p class="text-gray-500 mb-4">This chart provides an analysis of crop yields for the current season. For example, Corn: 450 tons, Wheat: 300 tons, Rice: 200 tons.</p>
+       <img src="http://localhost:5500/charts/cropYieldChart.png" alt="Crop Yield Chart" class="w-full h-auto" />
+      </div>
+      <!-- Add Demo Graph for Revenue -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <h2 class="text-xl font-bold mb-4">Revenue Trends</h2>
+       <p class="text-gray-500 mb-4">This chart illustrates the revenue trends over the past months. For example, January: $40,000, February: $45,000, March: $50,000.</p>
+       <img src="http://localhost:5500/charts/revenueTrendsChart.png" alt="Revenue Trends Chart" class="w-full h-auto" />
+      </div>
+      <!-- Water Usage Trends Chart -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <h2 class="text-xl font-bold mb-4">Water Usage Trends</h2>
+       <p class="text-gray-500 mb-4">This chart shows water usage trends for irrigation. For example, January: 30,000 liters, February: 28,000 liters, March: 32,000 liters.</p>
+       <img src="http://localhost:5500/charts/waterUsageChart.png" alt="Water Usage Chart" class="w-full h-auto" />
+      </div>
+     </div>
+    </div>
+
+    <!-- Crop Management Section -->
+    <div id="cropManagementSection" class="hidden">
+     <h1 class="text-2xl font-semibold mb-2">Crop Management</h1>
+     <p class="text-gray-500 mb-6">Optimize Your Farm Operations with Real-Time Insights</p>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+      <!-- Total Crops -->
+      <div class="bg-white p-6 rounded-lg shadow">
+       <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold">Total Crops</h2>
+        <i class="fas fa-seedling text-green-500"></i>
+       </div>
+       <p class="text-2xl font-semibold" id="totalCrops">12 Types</p>
+       <p class="text-green-500">+2% from month</p>
+      </div>
+      <!-- Current Yield -->
+      <div class="bg-white p-6 rounded-lg shadow">
+       <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold">Current Yield</h2>
+        <i class="fas fa-weight-hanging text-blue-500"></i>
+       </div>
+       <p class="text-2xl font-semibold" id="currentYield">450 tons</p>
+       <p class="text-green-500">+5.67% from last month</p>
+      </div>
+      <!-- Growth Status -->
+      <div class="bg-white p-6 rounded-lg shadow">
+       <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold">Growth Status</h2>
+        <i class="fas fa-chart-line text-purple-500"></i>
+       </div>
+       <p class="text-2xl font-semibold" id="growthStatus">Healthy</p>
+      </div>
+      <!-- Upcoming Harvests -->
+      <div class="bg-white p-6 rounded-lg shadow">
+       <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold">Upcoming Harvests</h2>
+        <i class="fas fa-calendar-alt text-blue-500"></i>
+       </div>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      <!-- Crop Growth Monitoring -->
+      <div class="bg-white p-6 rounded-lg shadow">
+       <h2 class="text-lg font-semibold mb-4">Crop Growth Monitoring</h2>
+       <div class="flex justify-between items-center mb-4">
+        <select class="border rounded-lg px-4 py-2">
+         <option>Corn</option>
+        </select>
+        <select class="border rounded-lg px-4 py-2">
+         <option>Days</option>
+        </select>
+       </div>
+       <img src="http://localhost:5500/charts/cropYieldChart.png" alt="Crop Growth Monitoring Chart" class="w-full h-auto" />
+      </div>
+      <!-- Crop Harvest Summary -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <h2 class="text-xl font-bold mb-4">Crop Harvest Summary</h2>
+       <canvas id="cropHarvestChart"></canvas>
+      </div>
+      <!-- Field Metrics Overview -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <h2 class="text-xl font-bold mb-4">Field Metrics Overview</h2>
+       <canvas id="fieldMetricsChart"></canvas>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+     </div>
+     <div class="bg-white p-6 rounded-lg shadow">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-lg font-semibold">Task Management</h2>
+       <div>
+        <button class="bg-green-500 text-white px-4 py-2 rounded-lg mr-2">Add New Task</button>
+        <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg">View All</button>
+       </div>
+      </div>
+      <table class="w-full text-left">
+       <thead>
+        <tr>
+         <th class="py-2">Task Name</th>
+         <th class="py-2">Assigned To</th>
+         <th class="py-2">Due Date</th>
+         <th class="py-2">Status</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="py-2">Task 1</td>
+         <td class="py-2">John Doe</td>
+         <td class="py-2">Sep 10, 2024</td>
+         <td class="py-2">Pending</td>
+        </tr>
+        <tr>
+         <td class="py-2">Task 2</td>
+         <td class="py-2">Jane Smith</td>
+         <td class="py-2">Sep 12, 2024</td>
+         <td class="py-2">Completed</td>
+        </tr>
+        <tr>
+         <td class="py-2">Task 3</td>
+         <td class="py-2">Michael Brown</td>
+         <td class="py-2">Sep 15, 2024</td>
+         <td class="py-2">In Progress</td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <!-- Weather Section -->
+    <div id="weatherSection" class="hidden">
+      <div class="flex justify-between items-center mb-6">
+        <button id="updateWeatherButton" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">Update Weather</button>
+      </div>
+      <div class="grid grid-cols-3 gap-6">
+        <!-- Current Weather -->
+        <div class="col-span-2 bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200">
+          <div class="flex justify-between items-center mb-4">
+            <div class="flex items-center">
+              <span id="currentCity" class="bg-green-500 text-white px-2 py-1 rounded-full mr-2 text-lg font-semibold">City: Chicago</span>
+            </div>
+            <div id="currentDate" class="text-gray-700 font-semibold text-lg">Date: 25-04-2025</div>
+          </div>
+          <div class="flex justify-between items-center">
+            <img id="currentWeatherIcon" alt="Weather Icon" class="w-24 h-24" />
+            <div id="currentTime" class="text-gray-700 font-semibold text-lg">Time: 12:00 PM</div>
+          </div>
+        </div>
+        <!-- 7-Day Forecast -->
+        <div class="col-span-3 bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200">
+          <h2 class="text-2xl font-bold mb-4 text-green-800">7-Day Forecast</h2>
+          <div id="forecastContainer" class="grid grid-cols-7 gap-4">
+            <!-- Forecast cards will be dynamically added here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Soil & Water Section -->
+    <div id="soilWaterSection" class="hidden">
+      <h1 class="text-3xl font-bold mb-6 text-green-600">Soil & Water Management</h1>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Soil Quality Card -->
+        <div class="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200">
+          <h2 class="text-2xl font-bold mb-4 text-green-800">Soil Quality</h2>
+          <div class="flex items-center mb-4">
+            <i class="fas fa-leaf text-green-600 text-3xl mr-4"></i>
+            <div>
+              <p class="text-gray-700">PH Level: <span id="soilPH" class="font-bold text-green-800">6.5</span></p>
+              <p class="text-gray-700">Moisture: <span id="soilMoisture" class="font-bold text-green-800">45%</span></p>
+              <p class="text-gray-700">Nutrients: <span id="soilNutrients" class="font-bold text-green-800">Optimal</span></p>
+              <p class="text-gray-700">Temperature: <span id="soilTemperature" class="font-bold text-green-800">22°C</span></p>
+              <p class="text-gray-700">Health Status: <span id="soilHealth" class="font-bold text-green-600">Healthy</span></p>
+            </div>
+          </div>
+        </div>
+        <!-- Water Usage Card -->
+        <div class="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200">
+          <h2 class="text-2xl font-bold mb-4 text-blue-800">Water Usage</h2>
+          <div class="flex items-center mb-4">
+            <i class="fas fa-tint text-blue-600 text-3xl mr-4"></i>
+            <div>
+              <p class="text-gray-700">Daily Usage: <span id="dailyWaterUsage" class="font-bold text-blue-800">1200 liters</span></p>
+              <p class="text-gray-700">Monthly Usage: <span id="monthlyWaterUsage" class="font-bold text-blue-800">36,000 liters</span></p>
+              <p class="text-gray-700">Irrigation Efficiency: <span id="irrigationEfficiency" class="font-bold text-blue-800">85%</span></p>
+              <p class="text-gray-700">Water Quality: <span id="waterQuality" class="font-bold text-blue-800">Good</span></p>
+              <p class="text-gray-700">Source: <span id="waterSource" class="font-bold text-blue-800">Well</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Water Usage Trends Chart -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200 mt-6">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Water Usage Trends</h2>
+        <img src="http://localhost:5500/charts/waterUsageChart.png" alt="Water Usage Trends Chart" class="w-full h-auto" />
+      </div>
+    
+      <!-- Irrigation Schedule -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200 mt-6">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Irrigation Schedule</h2>
+        <table class="min-w-full bg-gradient-to-br from-gray-100 to-gray-200 border rounded-lg shadow-lg">
+          <thead>
+            <tr class="bg-gray-300 text-gray-800">
+              <th class="py-3 px-4 border-b">Field</th>
+              <th class="py-3 px-4 border-b">Crop</th>
+              <th class="py-3 px-4 border-b">Next Irrigation</th>
+              <th class="py-3 px-4 border-b">Water Required</th>
+            </tr>
+          </thead>
+          <tbody id="irrigationSchedule">
+            <tr class="hover:bg-gray-100 transition duration-200">
+              <td class="py-3 px-4 border-b">Field A</td>
+              <td class="py-3 px-4 border-b">Corn</td>
+              <td class="py-3 px-4 border-b">Tomorrow</td>
+              <td class="py-3 px-4 border-b">500 liters</td>
+            </tr>
+            <tr class="hover:bg-gray-100 transition duration-200">
+              <td class="py-3 px-4 border-b">Field B</td>
+              <td class="py-3 px-4 border-b">Wheat</td>
+              <td class="py-3 px-4 border-b">In 2 days</td>
+              <td class="py-3 px-4 border-b">800 liters</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      <!-- Irrigation Recommendations -->
+      <div class="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200 mt-6">
+        <h2 class="text-2xl font-bold mb-4 text-green-800">Irrigation Recommendations</h2>
+        <ul id="irrigationRecommendations" class="list-disc pl-5 text-gray-700">
+          <li>Increase irrigation for Field A due to low soil moisture.</li>
+          <li>Reduce water usage for Field B to improve efficiency.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Equipment Section -->
+    <div id="equipmentSection" class="hidden">
+     <h1 class="text-2xl font-bold mb-4">Equipment Management</h1>
+     <div class="grid grid-cols-2 gap-6">
+      <!-- Equipment Overview Card -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200">
+       <h2 class="text-xl font-bold mb-4">Equipment Overview</h2>
+       <p class="text-gray-500">Total Equipment: <span id="totalEquipment" class="font-bold">15</span></p>
+       <p class="text-gray-500">Operational: <span id="operationalEquipment" class="font-bold">12</span></p>
+       <p class="text-gray-500">Under Maintenance: <span id="maintenanceEquipment" class="font-bold">3</span></p>
+       <p class="text-gray-500">Idle: <span id="idleEquipment" class="font-bold">2</span></p>
+      </div>
+      <!-- Maintenance Schedule Card -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200">
+       <h2 class="text-xl font-bold mb-4">Maintenance Schedule</h2>
+       <table class="min-w-full bg-white border rounded-lg shadow-lg">
+        <thead>
+         <tr>
+          <th class="py-2 px-4 border-b">Equipment</th>
+          <th class="py-2 px-4 border-b">Next Maintenance</th>
+          <th class="py-2 px-4 border-b">Status</th>
+         </tr>
+        </thead>
+        <tbody id="maintenanceSchedule">
+         <tr>
+          <td class="py-2 px-4 border-b">Tractor A</td>
+          <td class="py-2 px-4 border-b">10-Sep-2024</td>
+          <td class="py-2 px-4 border-b">Scheduled</td>
+         </tr>
+         <tr>
+          <td class="py-2 px-4 border-b">Harvester B</td>
+          <td class="py-2 px-4 border-b">15-Sep-2024</td>
+          <td class="py-2 px-4 border-b">Pending</td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+     <div class="mt-6">
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <h2 class="text-xl font-bold mb-4">Equipment Usage Analytics</h2>
+       <p class="text-gray-500 mb-4">This chart displays the usage analytics of farm equipment. For example, Tractor: 80 hours, Harvester: 60 hours, Seeder: 40 hours.</p>
+       <div style="width: 400px; height: 200px; overflow: hidden;"> <!-- Fixed container -->
+         <canvas id="equipmentUsageAnalyticsChart" width="400" height="200"></canvas>
+       </div>
+      </div>
+     </div>
+     <div class="mt-6">
+      <h2 class="text-xl font-bold mb-4">Maintenance History</h2>
+      <table class="min-w-full bg-white border rounded-lg shadow-lg">
+       <thead>
+        <tr>
+         <th class="py-2 px-4 border-b">Equipment</th>
+         <th class="py-2 px-4 border-b">Last Maintenance</th>
+         <th class="py-2 px-4 border-b">Details</th>
+        </tr>
+       </thead>
+       <tbody id="maintenanceHistory">
+        <tr>
+         <td class="py-2 px-4 border-b">Tractor A</td>
+         <td class="py-2 px-4 border-b">01-Aug-2024</td>
+         <td class="py-2 px-4 border-b">Oil Change, Tire Replacement</td>
+        </tr>
+        <tr>
+         <td class="py-2 px-4 border-b">Harvester B</td>
+         <td class="py-2 px-4 border-b">15-Jul-2024</td>
+         <td class="py-2 px-4 border-b">Blade Sharpening</td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div class="mt-6">
+      <h2 class="text-xl font-bold mb-4">Recommendations</h2>
+      <ul id="equipmentRecommendations" class="list-disc pl-5 text-gray-700">
+       <li>Schedule maintenance for Seeder C to avoid downtime.</li>
+       <li>Upgrade Harvester B for better efficiency.</li>
+      </ul>
+     </div>
+    </div>
+    <!-- Reports & Analytics Section -->
+    <div id="reportsAnalyticsSection" class="hidden">
+     <h1 class="text-2xl font-semibold mb-4">Reports & Analytics</h1>
+     <p class="text-gray-600 mb-6">
+      Gain insights into your farm's performance with detailed analytics and reports. Below are visualizations of key metrics to help you make informed decisions.
+     </p>
+     <div class="flex justify-end mb-4">
+      <button class="bg-green-500 text-white px-4 py-2 rounded-md" onclick="downloadReport()">Download Report</button>
+     </div>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Revenue Trends Chart -->
+      <div class="bg-white p-6 rounded-lg shadow-md revenue-trends">
+       <h2 class="text-xl font-bold mb-4">Revenue Trends</h2>
+       <img src="http://localhost:5500/charts/revenueTrendsChart.png" alt="Revenue Trends Chart" class="w-full h-auto" />
+      </div>
+      <!-- Crop Yield Analysis Chart -->
+      <div class="bg-white p-6 rounded-lg shadow-md crop-yield-analysis">
+       <h2 class="text-xl font-bold mb-4">Crop Yield Analysis</h2>
+       <img src="http://localhost:5500/charts/cropYieldChart.png" alt="Crop Yield Analysis Chart" class="w-full h-auto" />
+      </div>
+      <!-- Equipment Usage Chart -->
+      <div class="card p-6 col-span-1 lg:col-span-1">
+       <h2 class="text-xl font-bold mb-4">Equipment Usage</h2>
+       <canvas id="equipmentUsageChart"></canvas>
+      </div>
+      <!-- Water Usage Trends Chart -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+       <h2 class="text-xl font-bold mb-4">Water Usage Trends</h2>
+       <img src="http://localhost:5500/charts/waterUsageChart.png" alt="Water Usage Trends Chart" class="w-full h-auto" />
+      </div>
+     </div>
+     
+     <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+      <h2 class="text-xl font-bold mb-4">Comparison Tool</h2>
+      <p class="text-gray-500 mb-4">
+       Compare key metrics across different time periods or categories to identify trends and make data-driven decisions.
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+       <div>
+        <label class="block text-gray-700 font-semibold mb-2">Select Metric</label>
+        <select id="comparisonMetric" class="border rounded-lg px-4 py-2 w-full">
+         <option value="revenue">Revenue</option>
+         <option value="cropYield">Crop Yield</option>
+         <option value="equipmentUsage">Equipment Usage</option>
+         <option value="waterUsage">Water Usage</option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-gray-700 font-semibold mb-2">Select Time Period</label>
+        <select id="comparisonTimePeriod" class="border rounded-lg px-4 py-2 w-full">
+         <option value="lastMonth">Last Month</option>
+         <option value="lastYear">Last Year</option>
+         <option value="custom">Custom</option>
+        </select>
+       </div>
+      </div>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4" onclick="compareMetrics()">Compare</button>
+      <div id="comparisonResult" class="mt-6 text-gray-700"></div>
+     </div>
+    </div>
+    <!-- Settings Section -->
+    <div id="settingsSection" class="hidden">
+     <h1 class="text-2xl font-semibold mb-4">Settings</h1>
+     <p class="text-gray-600 mb-6">
+      Customize your AgriNova Dashboard experience. Update your preferences, manage notifications, and configure system settings.
+     </p>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- User Preferences -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+       <h2 class="text-xl font-bold mb-4">User Preferences</h2>
+       <label class="block text-gray-700 font-semibold mb-2">Theme</label>
+       <select id="themeSelector" class="border rounded-lg px-4 py-2 w-full mb-4">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+       </select>
+       <label class="block text-gray-700 font-semibold mb-2">Language</label>
+       <select id="languageSelector" class="border rounded-lg px-4 py-2 w-full">
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+       </select>
+       <button class="bg-green-500 text-white px-4 py-2 rounded-md mt-4" onclick="savePreferences()">Save Preferences</button>
+      </div>
+      <!-- Notification Settings -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+       <h2 class="text-xl font-bold mb-4">Notification Settings</h2>
+       <label class="block text-gray-700 font-semibold mb-2">
+        <input type="checkbox" id="emailNotifications" class="mr-2"> Email Notifications
+       </label>
+       <label class="block text-gray-700 font-semibold mb-2">
+        <input type="checkbox" id="smsNotifications" class="mr-2"> SMS Notifications
+       </label>
+       <label class="block text-gray-700 font-semibold mb-2">
+        <input type="checkbox" id="pushNotifications" class="mr-2"> Push Notifications
+       </label>
+       <button class="bg-green-500 text-white px-4 py-2 rounded-md mt-4" onclick="saveNotificationSettings()">Save Notifications</button>
+      </div>
+      <!-- System Settings -->
+      <div class="bg-white p-6 rounded-lg shadow-md lg:col-span-2">
+       <h2 class="text-xl font-bold mb-4">System Settings</h2>
+       <label class="block text-gray-700 font-semibold mb-2">Data Refresh Interval (minutes)</label>
+       <input type="number" id="refreshInterval" class="border rounded-lg px-4 py-2 w-full mb-4" min="1" value="5">
+       <button class="bg-green-500 text-white px-4 py-2 rounded-md" onclick="saveSystemSettings()">Save System Settings</button>
+      </div>
+     </div>
+    </div>
+    <div id="chatbotSection" class="hidden">
+      <!-- Enhanced Chatbot Header -->
+      <div class="chatbot-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Bot Avatar" />
+        <span class="chatbot-title">AgriNova Chatbot</span>
+      </div>
+      <div class="chatbot-container">
+        <!-- Chat Window -->
+        <div id="chatWindow">
+          <div class="chat-message bot">
+            <div class="chat-avatar">🤖</div>
+            <div class="chat-bubble">Welcome! How can I assist you today?</div>
+          </div>
+        </div>
+        <!-- Typing Indicator -->
+        <div id="typingIndicator" class="hidden">
+          <span class="chat-avatar">🤖</span>
+          <span class="animate-pulse">Chatbot is typing...</span>
+        </div>
+        <!-- Input Section -->
+        <div class="chatbot-input-area">
+          <input id="chatInput" type="text" placeholder="Type your message..." />
+          <button class="chatbot-send-btn" onclick="sendMessage()">✉️ Send</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="luxuryPestManagementSection" class="hidden">
+      <h1 class="text-3xl font-semibold mb-4">Pest-Management</h1>
+      <p class="text-gray-100 mb-6">
+        Experience next-level pest management with advanced features and stunning design.
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Crop-Based Pest Suggestion -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-bold mb-4">Crop-Based Pest Suggestion</h2>
+          <select id="cropSelector" class="w-full p-2 border rounded-lg mb-4"></select>
+          <ul id="suggestedPests" class="list-disc pl-5 text-gray-700"></ul>
+        </div>
+        <!-- Pest Severity Input -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-bold mb-4">Pest Severity Level</h2>
+          <select id="severitySelector" class="w-full p-2 border rounded-lg mb-4">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button class="bg-red-500 text-white px-4 py-2 rounded-lg" onclick="getTreatmentRecommendation()">Get Recommendation</button>
+        </div>
+      </div>
+      <!-- Treatment Recommendation -->
+      <div class="bg-white p-6 rounded-lg shadow-lg mt-6">
+        <h2 class="text-xl font-bold mb-4">Treatment Recommendation</h2>
+        <p id="treatmentRecommendation" class="text-gray-700">Select a crop and severity level to see recommendations.</p>
+      </div>
+      <!-- Live Infection Map -->
+      <div class="bg-white p-6 rounded-lg shadow-lg mt-6">
+        <h2 class="text-xl font-bold mb-4">Live Infection Map</h2>
+        <canvas id="infectionMap" class="w-full h-64"></canvas>
+      </div>
+    </div>
+    <!-- Loan Management Section -->
+    <div id="loanManagementSection" class="hidden">
+      <h1 class="text-2xl font-semibold mb-4">Loan Management</h1>
+      <p class="text-gray-600 mb-6">Select a scheme type and view details for farm loans and subsidies.</p>
+      <div class="mb-4 flex flex-wrap gap-4">
+        <label>
+          <input type="radio" name="schemeType" value="all" checked onchange="filterSchemes()"> <span class="font-semibold">All</span>
+        </label>
+        <label>
+          <input type="radio" name="schemeType" value="National" onchange="filterSchemes()"> <span class="font-semibold">National Schemes</span>
+        </label>
+        <label>
+          <input type="radio" name="schemeType" value="State" onchange="filterSchemes()"> <span class="font-semibold">State Schemes</span>
+        </label>
+        <select id="stateSelector" class="border rounded px-2 py-1 ml-2" style="display:none;" onchange="filterSchemes()">
+          <option value="">-- Select State --</option>
+        </select>
+      </div>
+      <div id="loanSchemesContainer" class="space-y-6">
+        <!-- Loan/subsidy schemes will be dynamically inserted here -->
+      </div>
+    </div>
+<!-- Community Section -->
+    <div id="communitySection" class="hidden">
+      <h1 class="text-2xl font-semibold mb-4">Community</h1>
+      <p class="text-gray-600 mb-6">Connect with other farmers, share knowledge, and grow together.</p>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold mb-4">Community Chat</h2>
+        <iframe src="http://localhost:3000" style="width:100%;height:600px;border:none;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);"></iframe>
+      </div>
+    </div>
+    <!-- IoT Devices Section -->
+    <div id="iotDevicesSection" class="hidden">
+      <h1 class="text-2xl font-semibold mb-4">IoT Devices</h1>
+      <p class="text-gray-600 mb-6">Monitor and control your farm with IoT devices.</p>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold mb-4">Connected Devices</h2>
+        <table class="min-w-full bg-white border rounded-lg shadow-lg">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">Device Name</th>
+              <th class="py-2 px-4 border-b">Status</th>
+              <th class="py-2 px-4 border-b">Last Synced</th>
+            </tr>
+          </thead>
+          <tbody id="iotDevicesTable">
+            <tr>
+              <td class="py-2 px-4 border-b">Soil Moisture Sensor</td>
+              <td class="py-2 px-4 border-b">Active</td>
+              <td class="py-2 px-4 border-b">2024-09-15 10:00 AM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+   </div>
+  </div>
+  <div id="notification" class="notification hidden"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scripts.js"></script>
+  <script>
+  async function fetchLuxuryPestManagementData() {
+    try {
+      const response = await fetch('/datasets/pestManagement.json');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const data = await response.json();
+
+      // Update gradient colors
+      if (data.gradientColors) {
+        document.documentElement.style.setProperty('--gradient-start', data.gradientColors.start);
+        document.documentElement.style.setProperty('--gradient-end', data.gradientColors.end);
+      } else {
+        console.warn('Gradient colors are not defined in the dataset.');
+      }
+
+      // Populate crop selector
+      const cropSelector = document.getElementById('cropSelector');
+      cropSelector.innerHTML = ''; // Clear existing options
+      if (data.controlStrategies && data.controlStrategies.length > 0) {
+        cropSelector.innerHTML = data.controlStrategies
+          .map(strategy => `<option>${strategy}</option>`)
+          .join('');
+      } else {
+        cropSelector.innerHTML = '<option disabled>No crops available</option>';
+        console.warn('No control strategies found in the dataset.');
+      }
+
+      // Render pest activity chart
+      const ctx = document.getElementById('infectionMap').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.activityTrends.labels,
+          datasets: [{
+            label: 'Pest Activity',
+            data: data.activityTrends.data,
+            borderColor: '#e53e3e',
+            backgroundColor: 'rgba(229, 62, 62, 0.2)',
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true }
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error fetching luxury pest management data:', error);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    fetchLuxuryPestManagementData();
+  });
+</script>
+  <script>
+  function getTreatmentRecommendation() {
+    const crop = document.getElementById('cropSelector').value.toLowerCase();
+    const severity = document.getElementById('severitySelector').value.toLowerCase();
+
+    const recommendations = {
+      corn: {
+        low: 'Use neem oil spray.',
+        medium: 'Apply Bacillus thuringiensis (Bt).',
+        high: 'Use synthetic pesticides like Lambda-cyhalothrin.'
+      },
+      wheat: {
+        low: 'Use sulfur-based fungicides.',
+        medium: 'Apply copper oxychloride.',
+        high: 'Use systemic fungicides like Propiconazole.'
+      },
+      rice: {
+        low: 'Spray potassium silicate.',
+        medium: 'Apply carbendazim.',
+        high: 'Use chlorpyrifos for severe infestations.'
+      }
+    };
+
+    const recommendation = recommendations[crop]?.[severity] || 'No recommendation available.';
+    document.getElementById('treatmentRecommendation').textContent = recommendation;
+  }
+</script>
+  <script>
+  // ...existing code...
+
+  let allSchemes = [];
+  let allStates = [];
+
+  // Loan Management Section: Fetch and render loan/subsidy schemes grouped by National/State
+  async function fetchLoanSchemes() {
+    const container = document.getElementById('loanSchemesContainer');
+    container.innerHTML = '<div class="text-gray-500">Loading schemes...</div>';
+    try {
+      // Use the agri_schemes_india.json as the source
+      const apiUrl = '/datasets/agri_schemes_india.json';
+      const res = await fetch(apiUrl);
+      if (!res.ok) {
+        // Show error with status code for easier debugging
+        container.innerHTML = `<div class="text-red-500">Failed to load schemes (API error: ${res.status}).</div>`;
+        return;
+      }
+      const schemes = await res.json();
+      if (!Array.isArray(schemes) || schemes.length === 0) {
+        container.innerHTML = '<div class="text-red-500">No schemes found.</div>';
+        return;
+      }
+      allSchemes = schemes;
+      // Collect unique states for dropdown
+      allStates = Array.from(new Set(schemes.filter(s => s.category === 'State' && s.state).map(s => s.state))).sort();
+      const stateSelector = document.getElementById('stateSelector');
+      stateSelector.innerHTML = '<option value="">-- Select State --</option>' + allStates.map(state => `<option value="${state}">${state}</option>`).join('');
+      filterSchemes();
+    } catch (err) {
+      // Show error message with err.message for debugging
+      container.innerHTML = `<div class="text-red-500">Failed to load schemes (Network error: ${err.message}).</div>`;
+    }
+  }
+
+  function filterSchemes() {
+    const container = document.getElementById('loanSchemesContainer');
+    const schemeType = document.querySelector('input[name="schemeType"]:checked').value;
+    const stateSelector = document.getElementById('stateSelector');
+    // Show state dropdown only if State is selected
+    stateSelector.style.display = (schemeType === 'State') ? 'inline-block' : 'none';
+
+    let filtered = allSchemes;
+    if (schemeType === 'National') {
+      filtered = allSchemes.filter(s => s.category === 'National');
+    } else if (schemeType === 'State') {
+      const selectedState = stateSelector.value;
+      filtered = allSchemes.filter(s => s.category === 'State' && (!selectedState || s.state === selectedState));
+    }
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="text-red-500">No schemes found for the selected filter.</div>';
+      return;
+    }
+
+    // Group and render
+    let html = '';
+    if (schemeType === 'all' || schemeType === 'National') {
+      const nationalSchemes = filtered.filter(s => s.category === 'National');
+      if (nationalSchemes.length > 0) {
+        html += `<h2 class="text-xl font-bold mb-2 text-green-700">National Schemes</h2>`;
+        html += nationalSchemes.map(scheme => renderSchemeCard(scheme)).join('');
+      }
+    }
+    if (schemeType === 'all' || schemeType === 'State') {
+      const stateSchemes = {};
+      filtered.filter(s => s.category === 'State').forEach(s => {
+        if (!stateSchemes[s.state]) stateSchemes[s.state] = [];
+        stateSchemes[s.state].push(s);
+      });
+      if (Object.keys(stateSchemes).length > 0) {
+        html += `<h2 class="text-xl font-bold mt-8 mb-2 text-blue-700">State Schemes</h2>`;
+        Object.keys(stateSchemes).sort().forEach(state => {
+          html += `<h3 class="text-lg font-semibold mt-6 mb-2 text-blue-800">${state}</h3>`;
+          html += stateSchemes[state].map(scheme => renderSchemeCard(scheme)).join('');
+        });
+      }
+    }
+    container.innerHTML = html;
+  }
+
+  // Helper to render a scheme card
+  function renderSchemeCard(scheme) {
+    return `
+      <div class="bg-white p-6 rounded-lg shadow-md mb-4">
+        <h4 class="text-lg font-bold mb-2">${scheme.scheme_name || ''}</h4>
+        <p class="mb-2"><span class="font-semibold">Purpose:</span> ${scheme.purpose || ''}</p>
+        ${scheme.loan_amount_range ? `<p class="mb-2"><span class="font-semibold">Loan Amount Range:</span> ${scheme.loan_amount_range}</p>` : ''}
+        ${scheme.interest_rate ? `<p class="mb-2"><span class="font-semibold">Interest Rate:</span> ${scheme.interest_rate}</p>` : ''}
+        ${scheme.benefit ? `<p class="mb-2"><span class="font-semibold">Benefit:</span> ${scheme.benefit}</p>` : ''}
+        <p class="mb-2"><span class="font-semibold">Eligibility:</span> ${scheme.eligibility || ''}</p>
+        <div class="mb-2">
+          <span class="font-semibold">Application Process:</span>
+          <ol class="list-decimal pl-6">
+            ${(scheme.application_process?.steps || []).map(step => `<li>${step}</li>`).join('')}
+          </ol>
+          ${scheme.application_process?.online_link ? `<a href="${scheme.application_process.online_link}" target="_blank" class="text-blue-600 underline mt-2 inline-block">Apply / More Info</a>` : ''}
+          ${scheme.application_process?.summary_portal ? `<a href="${scheme.application_process.summary_portal}" target="_blank" class="text-blue-600 underline ml-4">Summary Portal</a>` : ''}
+        </div>
+        ${scheme.help_links && scheme.help_links.length > 0 ? `
+          <div class="mt-2">
+            <span class="font-semibold">Help Links:</span>
+            <ul class="list-disc pl-6">
+              ${scheme.help_links.map(link => `
+                <li>
+                  <a href="${link.url}" target="_blank" class="text-green-700 underline">${link.title || link.type || 'Help Link'}</a>
+                  ${link.type ? `<span class="text-gray-500 ml-2">(${link.type})</span>` : ''}
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  // Show section logic: call fetchLoanSchemes when showing loanManagementSection
+  function showSection(sectionId) {
+    // ...existing code...
+    document.querySelectorAll('div[id$="Section"]').forEach(div => div.classList.add('hidden'));
+    document.getElementById(sectionId).classList.remove('hidden');
+    if (sectionId === 'loanManagementSection') fetchLoanSchemes();
+    // ...existing code...
+  }
+
+  // ...existing code...
+</script>
+  <script>
+  // ...existing code...
+
+  // Remove any code that uses Chrome extensions or browser APIs that return true in event listeners.
+  // This error is NOT caused by your fetchLoanSchemes/filterSchemes logic.
+  // It is usually caused by a browser extension (like AdBlock, Grammarly, or a password manager)
+  // or by using chrome.runtime.sendMessage or similar APIs in your scripts.js or other scripts.
+
+  // To ensure your code is not causing this:
+  // 1. Check scripts.js and remove any chrome.runtime.* or browser.runtime.* calls.
+  // 2. Make sure you are not using any extension APIs in your own code.
+  // 3. If you are not, ignore this error: it is harmless and caused by a browser extension.
+
+  // Your fetchLoanSchemes/filterSchemes logic is correct and does not cause this error.
+
+  // ...existing code...
+</script>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 AGRINOVA. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Terms of Service</a> | 
+      <a href="#">Contact Us</a>
+    </p>
+  </footer>
+ </body>
+</html>

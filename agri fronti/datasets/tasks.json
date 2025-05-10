@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Irrigation",
+    "assignedTo": "John",
+    "dueDate": "2024-09-10",
+    "status": "Pending"
+  },
+  {
+    "id": 2,
+    "name": "Fertilizing",
+    "assignedTo": "Jane",
+    "dueDate": "2024-09-12",
+    "status": "Completed"
+  },
+  {
+    "id": 3,
+    "name": "Pest Control",
+    "assignedTo": "Michael",
+    "dueDate": "2024-09-15",
+    "status": "In Progress"
+  },
+  {
+    "id": 4,
+    "name": "harvest",
+    "assignedTo": "shikhar",
+    "dueDate": "2025-04-16",
+    "status": "Pending"
+  },
+  {
+    "id": 5,
+    "name": "harvest",
+    "assignedTo": "shikhar",
+    "dueDate": "2025-04-08",
+    "status": "Pending"
+  },
+  {
+    "id": 6,
+    "name": "Monali",
+    "assignedTo": "cash Collection",
+    "dueDate": "2025-04-22",
+    "status": "Pending"
+  },
+  {
+    "id": 7,
+    "name": "fs",
+    "assignedTo": "shikhar",
+    "dueDate": "2025-04-24",
+    "status": "Pending"
+  },
+  {
+    "id": 8,
+    "name": "harvest",
+    "assignedTo": "shikhar",
+    "dueDate": "2025-04-18",
+    "status": "Pending"
+  },
+  {
+    "id": 9,
+    "name": "Monali",
+    "assignedTo": "cash Collection",
+    "dueDate": "2025-04-30",
+    "status": "Pending"
+  }
+]

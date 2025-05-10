@@ -1,0 +1,7 @@
+{
+  "harvestSummary": [
+    { "crop": "Corn", "harvested": 150 },
+    { "crop": "Wheat", "harvested": 120 },
+    { "crop": "Rice", "harvested": 200 }
+  ]
+}

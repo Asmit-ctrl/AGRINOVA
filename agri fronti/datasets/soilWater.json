@@ -1,0 +1,20 @@
+{
+  "soilQuality": {
+    "phLevel": 6.5,
+    "moisture": "45%",
+    "nutrients": "Optimal",
+    "temperature": "22°C",
+    "healthStatus": "Healthy"
+  },
+  "waterUsage": {
+    "dailyUsage": "1200 liters",
+    "monthlyUsage": "36000 liters",
+    "irrigationEfficiency": "85%",
+    "waterQuality": "Good",
+    "source": "Well"
+  },
+  "irrigationSchedule": [
+    { "field": "Field A", "crop": "Corn", "nextIrrigation": "Tomorrow", "waterRequired": "500 liters" },
+    { "field": "Field B", "crop": "Wheat", "nextIrrigation": "In 2 days", "waterRequired": "800 liters" }
+  ]
+}

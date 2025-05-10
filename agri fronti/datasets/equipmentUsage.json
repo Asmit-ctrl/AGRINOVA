@@ -1,0 +1,15 @@
+{
+  "equipmentUsage": [
+    { "equipment": "Tractor A", "usageHours": 120 },
+    { "equipment": "Harvester B", "usageHours": 90 },
+    { "equipment": "Seeder C", "usageHours": 60 },
+    { "equipment": "Plow D", "usageHours": 75 },
+    { "equipment": "Sprayer E", "usageHours": 50 },
+    { "equipment": "Combine F", "usageHours": 110 },
+    { "equipment": "Baler G", "usageHours": 45 },
+    { "equipment": "Cultivator H", "usageHours": 80 },
+    { "equipment": "Mower I", "usageHours": 65 },
+    { "equipment": "Loader J", "usageHours": 95 },
+    { "equipment": "Planter K", "usageHours": 70 }
+  ]
+}

@@ -1,0 +1,828 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   AgriNova - Your Personal AI Farm Assistant
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Playfair Display', serif;
+    }
+    .content {
+      font-family: 'Roboto', sans-serif;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: 1.75rem;
+    }
+    p, ul, li, a, button {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+    }
+    a, button {
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    a:hover, button:hover {
+      color: #ffffff;
+      background-color: #1a202c;
+    }
+    /* Enhanced Typography */
+    body {
+      font-family: 'Playfair Display', serif;
+      color: #f8f9fa;
+      background-color: #000000;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    p, ul, li, a, button {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    /* Button Enhancements */
+    a, button {
+      transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    a:hover, button:hover {
+      color: #ffffff;
+      background-color: #1a202c;
+      transform: scale(1.05);
+    }
+
+    /* Add subtle animations */
+    .fade-in {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Enhanced Background Overlay */
+    .bg-overlay {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+      backdrop-filter: blur(5px);
+    }
+
+    /* Navbar Enhancements */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Section Enhancements */
+    #pageContent h2 {
+      font-size: 2.5rem;
+      color: #88f2d4;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #pageContent p, #pageContent ul li {
+      color: #d1d5db;
+    }
+
+    /* Button Enhancements */
+    .rounded-full {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .rounded-full:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer Enhancements */
+    .footer {
+      background: #1a202c;
+      color: #ffffff; /* Change text color to white */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add shadow to text */
+      text-align: center;
+      padding: 10px;
+      font-size: 0.875rem;
+    }
+
+    .footer a {
+      color: #88f2d4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: #ffffff;
+    }
+
+    h1.section-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #88f2d4;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+    }
+    h2.sub-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Active tab styling */
+    .nav-active {
+      position: relative;
+      color: #1a202c !important; /* Dark text for contrast */
+    }
+
+    .nav-active::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%; /* Increase width */
+      height: 140%; /* Increase height */
+      background-color: #b2fba5; /* Light beige background */
+      border-radius: 16px; /* Rounded rectangle */
+      z-index: -1;
+      padding: 10px; /* Add padding */
+    }
+
+    /* Add more space between titles */
+    h1.section-heading, h2.sub-heading {
+      margin-bottom: 1.5rem; /* Increase bottom margin */
+    }
+  </style>
+ </head>
+ <body class="bg-black text-white overflow-y-auto" style="background-image: url('D:/agri fronti/landing-page/image/3.jpg'); background-size: cover; background-position: center;">
+  <div id="mainContent" class="relative">
+    <img alt="Aerial view of a green agricultural field" class="w-full h-screen object-cover fade-in" src="image/3.jpg" width="1920" height="1080"/>
+    <div class="absolute inset-0 bg-overlay flex flex-col items-center justify-center text-center px-4">
+      <div class="w-full flex justify-between items-center py-4 px-8 fixed top-0 navbar">
+        <div class="text-lg font-bold cursor-pointer" onclick="location.reload()">
+          AgriNova
+        </div>
+        <div class="flex space-x-4">
+          <a class="text-sm text-gray-300 hover:text-white cursor-pointer" href="/landing-page/landing-page.html">
+            Home
+          </a>
+          <a class="text-sm text-gray-300 hover:text-white cursor-pointer" onclick="showContent('aboutUsContent')">
+            About us
+          </a>
+          <a class="text-sm text-gray-300 hover:text-white cursor-pointer" onclick="showContent('featuresContent')">
+            Features
+          </a>
+          <a class="text-sm text-gray-300 hover:text-white cursor-pointer" onclick="showContent('servicesContent')">
+            Services
+          </a>
+          <a class="text-sm text-gray-300 hover:text-white cursor-pointer" onclick="redirectToDashboard()">
+            Dashboard
+          </a>
+        </div>
+        <a id="signupButton" class="bg-green-700 text-white py-2 px-4 rounded-full text-sm" href="/login/login.html">
+          Signup
+        </a>
+        <div id="profileButton" class="hidden relative">
+          <button style="background-color: #b2fba5;" class="text-black py-2 px-4 rounded-full text-sm flex items-center">
+            <span id="profileUsername">
+            </span>
+            <i class="fas fa-caret-down ml-2">
+            </i>
+          </button>
+          <div class="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg hidden" id="profileDropdown">
+            <button class="w-full text-left px-4 py-2 hover:bg-gray-200" onclick="logout()">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="defaultContent" class="mt-16 px-6 md:px-12 lg:px-20 xl:px-32 content fade-in">
+        <h1 class="section-heading text-center mb-6 text-4xl md:text-5xl">
+          Grow Smarter, Not Harder.
+        </h1>
+        <p class="text-base md:text-lg text-center text-gray-300 mb-8 leading-relaxed">
+          Your personal AI farm assistant—tailored crop advice, real-time task updates, and automated pest alerts.<br>
+          Built for every soil. Designed for every farmer.
+        </p>
+        <div class="mt-10 flex space-x-6 justify-center">
+          <a class="bg-[#b2fba5] text-black py-4 px-8 rounded-full text-base font-medium hover:bg-green-800" href="/login/login.html">
+            Get Started Today
+          </a>
+          <a class="bg-white text-green-700 py-4 px-8 rounded-full text-base font-medium hover:bg-green-100" onclick="showContent('servicesContent')">
+            Our Services
+          </a>
+        </div>
+      </div>
+      <div id="pageContent" class="mt-12 px-4 md:px-8 lg:px-16 xl:px-24 content fade-in">
+        <!-- About Us Content -->
+        <div id="aboutUsContent" class="hidden mt-8">
+          <h1 class="section-heading text-center mb-6">
+            About Us
+          </h1>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <!-- Who We Are Box -->
+            <div class="p-4 rounded-lg shadow-md" style="background: linear-gradient(135deg, #2d2d2d, #1a3d2f);">
+              <h2 class="text-xl font-semibold mb-3 text-white">Who We Are</h2>
+              <p class="text-sm leading-relaxed text-gray-300">
+                AgriNova is a revolutionary agri-tech platform that combines agricultural wisdom with cutting-edge technology. 
+                We empower farmers to make smarter, faster, and safer decisions in crop protection and farm management.
+              </p>
+            </div>
+            <!-- Our Vision Box -->
+            <div class="p-4 rounded-lg shadow-md" style="background: linear-gradient(135deg, #1a3d2f, #2d2d2d);">
+              <h2 class="text-xl font-semibold mb-3 text-white">Our Vision</h2>
+              <p class="text-sm leading-relaxed text-gray-300">
+                At AgriNova, our vision is to make intelligent farming accessible to every grower, regardless of the size of their land. 
+                We aim to create a future where technology and agriculture work hand-in-hand to ensure food security and sustainability for generations to come.
+              </p>
+            </div>
+          </div>
+          <!-- Meet Our Team Box -->
+          <div class="p-4 rounded-lg shadow-md" style="background: linear-gradient(135deg, #2d2d2d, #1a3d2f);">
+            <h2 class="text-xl font-semibold mb-4 text-center text-white">Meet Our Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="text-center">
+                <img alt="John Doe" class="w-20 h-20 rounded-full mx-auto mb-3 shadow-md" src="New folder/devang.jpg"/>
+                <h3 class="text-lg font-semibold text-white">Devang Kumar Bharti</h3>
+                <p class="text-xs text-gray-400">Team Leader & Front-end Developer</p>
+                <p class="text-xs text-gray-300"> Expert in frontend development and a Visionary leader. </p>
+              </div>
+              <div class="text-center">
+                <img alt="Jane Smith" class="w-20 h-20 rounded-full mx-auto mb-3 shadow-md" src="New folder/BHANDARI.jpg"/>
+                <h3 class="text-lg font-semibold text-white">Shikhar Bhandari</h3>
+                <p class="text-xs text-gray-400">AI Backend Developer</p>
+                <p class="text-xs text-gray-300">Expert in AI and machine learning.</p>
+              </div>
+              <div class="text-center">
+                <img alt="Emily Johnson" class="w-20 h-20 rounded-full mx-auto mb-3 shadow-md" src="New folder/SHUKLA.jpg"/>
+                <h3 class="text-lg font-semibold text-white">Shikhar Shukla</h3>
+                <p class="text-xs text-gray-400">Dataset & PR</p>
+                <p class="text-xs text-gray-300">Specialist in crop science .</p>
+              </div>
+              <div class="text-center">
+                <img alt="Michael Brown" class="w-20 h-20 rounded-full mx-auto mb-3 shadow-md" src="New folder/VASU.jpg"/>
+                <h3 class="text-lg font-semibold text-white">Vasu Sharma</h3>
+                <p class="text-xs text-gray-400">Operations Manager</p>
+                <p class="text-xs text-gray-300">Ensures seamless delivery of our services.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Features Content -->
+        <div id="featuresContent" class="hidden mt-8">
+          <h1 class="section-heading text-center mb-4">
+            Features
+          </h1>
+          <p class="text-sm text-center text-gray-300 mb-4">
+            Discover the cutting-edge tools and services that make AgriNova the ultimate farming assistant.
+          </p>
+          <!-- Main Features Box -->
+          <div class="p-4 rounded-lg shadow-md mb-6" style="background: linear-gradient(135deg, #2d2d2d, #1a3d2f);">
+            <h2 class="text-xl font-semibold mb-3 text-white text-center">Main Features</h2>
+            <ul class="list-disc list-inside text-sm leading-relaxed text-gray-300">
+              <li>📍 <strong>Weather-Based Pest Prediction:</strong> Get real-time alerts using local weather data to predict pest outbreaks before they happen.</li>
+              <li>🐛 <strong>Manual Pest Selection:</strong> No camera required. Simply select pests from a crop-specific list—quick and user-friendly.</li>
+              <li>🌾 <strong>Crop-Specific Pest & Disease Info:</strong> Explore a rich database tailored to your crop’s vulnerabilities and protection needs.</li>
+              <li>📊 <strong>Severity-Based Solutions:</strong> Enter infection level (low, medium, high) and receive precise treatment plans instantly.</li>
+              <li>🪴 <strong>Growth Stage Recommendations:</strong> Receive custom pest control guidance depending on your crop's current development phase.</li>
+              <li>🚜 <strong>Support for All Farming Practices:</strong> Whether you farm organically, conventionally, or use IPM—AgriNova adapts its advice to your method.</li>
+              <li>🧬 <strong>Disease Detection & Management:</strong> Identify early symptoms of pest-borne diseases and get immediate solutions.</li>
+              <li>🔔 <strong>Smart Alerts & Notifications:</strong> Stay informed with timely warnings about high-risk pest activity in your area.</li>
+            </ul>
+          </div>
+          <!-- Why Choose Us Box -->
+          <div class="p-4 rounded-lg shadow-md" style="background: linear-gradient(135deg, #1a3d2f, #2d2d2d);">
+            <h2 class="text-xl font-semibold mb-3 text-white text-center">Why Choose Us?</h2>
+            <p class="text-sm leading-relaxed text-gray-300 mb-4 text-center">
+              AgriNova is more than just a tool—it's your partner in smarter, sustainable farming.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="text-center">
+                <h3 class="text-base font-semibold text-white mb-2">🌟 Advanced Technology</h3>
+                <p class="text-sm text-gray-300">Leverage AI and machine learning to optimize your farming operations.</p>
+              </div>
+              <div class="text-center">
+                <h3 class="text-base font-semibold text-white mb-2">🌍 Sustainable Practices</h3>
+                <p class="text-sm text-gray-300">Promote eco-friendly farming with tailored solutions for every method.</p>
+              </div>
+              <div class="text-center">
+                <h3 class="text-base font-semibold text-white mb-2">📈 Data-Driven Insights</h3>
+                <p class="text-sm text-gray-300">Make informed decisions with real-time data and predictive analytics.</p>
+              </div>
+              <div class="text-center">
+                <h3 class="text-base font-semibold text-white mb-2">🤝 Personalized Support</h3>
+                <p class="text-sm text-gray-300">Get expert advice and recommendations tailored to your unique needs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Services Content -->
+        <div id="servicesContent" class="hidden mt-12 overflow-y-auto max-h-[80vh]">
+          <h1 class="section-heading text-center mb-10">
+            Smart Farming, Smarter Services
+          </h1>
+          <!-- Our Core Services -->
+          <h2 class="sub-heading text-center mb-6">
+            💎 Our Core Services
+          </h2>
+          <div class="mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Intelligent Crop Planner -->
+              <div class="p-6 rounded-lg shadow-md" style="background: linear-gradient(135deg, #1a3d2f, #2d2d2d);">
+                <h3 class="text-lg font-semibold text-white mb-2">🗓️ Intelligent Crop Planner</h3>
+                <p class="text-sm text-gray-300">
+                  Your personalized farming calendar—auto-updated by crop type, growth stage, and weather.
+                </p>
+              </div>
+              <!-- Automated Pest & Disease Control -->
+              <div class="p-6 rounded-lg shadow-md" style="background: linear-gradient(135deg, #1a3d2f, #2d2d2d);">
+                <h3 class="text-lg font-semibold text-white mb-2">🐛 Automated Pest & Disease Control</h3>
+                <p class="text-sm text-gray-300">
+                  Detect. Predict. Defeat. Our AI watches for pest threats and suggests optimal treatments.
+                </p>
+              </div>
+              <!-- Weather-Aware Farming -->
+              <div class="p-6 rounded-lg shadow-md" style="background: linear-gradient(135deg, #1a3d2f, #2d2d2d);">
+                <h3 class="text-lg font-semibold text-white mb-2">🌦️ Weather-Aware Farming</h3>
+                <p class="text-sm text-gray-300">
+                  Get real-time alerts and custom advice based on your local forecast.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Premium Plans Section -->
+          <h2 class="sub-heading text-center mb-6">
+            🚀 Premium Plans
+          </h2>
+          <div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- Basic Plan -->
+              <div class="relative p-6 rounded-lg shadow-lg bg-gradient-to-br from-gray-800 to-gray-900 bg-opacity-60 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+                <h3 class="text-lg font-semibold text-white mb-2">Basic</h3>
+                <p class="text-sm text-gray-300 mb-4">Free</p>
+                <button onclick="toggleDetails('basicDetails')" class="text-sm text-green-400 hover:underline">
+                  View Details <i class="fas fa-chevron-down"></i>
+                </button>
+                <ul id="basicDetails" class="list-disc list-inside text-sm text-gray-300 mt-4 hidden">
+                  <li>Crop planner for 1 crop</li>
+                  <li>Weather updates (daily)</li>
+                  <li>Basic pest prediction</li>
+                  <li>Manual input tracking</li>
+                </ul>
+              </div>
+              <!-- Pro Farmer Plan -->
+              <div class="relative p-6 rounded-lg shadow-lg bg-gradient-to-br from-green-700 to-green-900 bg-opacity-60 backdrop-blur-md border border-green-500 hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+                <div class="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
+                  ✨ Premium
+                </div>
+                <h3 class="text-lg font-semibold text-white mb-2">Pro Farmer</h3>
+                <p class="text-sm text-gray-300 mb-4">₹15,000/month</p>
+                <button onclick="toggleDetails('proDetails')" class="text-sm text-green-400 hover:underline">
+                  View Details <i class="fas fa-chevron-down"></i>
+                </button>
+                <ul id="proDetails" class="list-disc list-inside text-sm text-gray-300 mt-4 hidden">
+                  <li>Unlimited crops & fields</li>
+                  <li>Automated task scheduler</li>
+                  <li>Advanced pest detection</li>
+                  <li>Resource usage graphs</li>
+                  <li>Offline mode</li>
+                  <li>Priority support</li>
+                </ul>
+              </div>
+              <!-- Enterprise Plan -->
+              <div class="relative p-6 rounded-lg shadow-lg bg-gradient-to-br from-gray-800 to-gray-900 bg-opacity-60 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+                <h3 class="text-lg font-semibold text-white mb-2">Enterprise</h3>
+                <p class="text-sm text-gray-300 mb-4">Custom</p>
+                <button onclick="toggleDetails('enterpriseDetails')" class="text-sm text-green-400 hover:underline">
+                  View Details <i class="fas fa-chevron-down"></i>
+                </button>
+                <ul id="enterpriseDetails" class="list-disc list-inside text-sm text-gray-300 mt-4 hidden">
+                  <li>Multi-user dashboard</li>
+                  <li>API integrations</li>
+                  <li>Satellite field insights</li>
+                  <li>Crop health prediction AI</li>
+                  <li>Dedicated agritech consultant</li>
+                  <li>Team training & onboarding</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          function toggleDetails(id) {
+            const details = document.getElementById(id);
+            details.classList.toggle('hidden');
+          }
+
+          function showContent(contentId) {
+            const contentSections = ['defaultContent', 'aboutUsContent', 'featuresContent', 'servicesContent', 'dashboardContent'];
+            const navLinks = document.querySelectorAll('.navbar a');
+
+            // Show the selected content and hide others
+            contentSections.forEach(id => {
+              const section = document.getElementById(id);
+              if (section) {
+                section.classList.toggle('hidden', id !== contentId);
+              }
+            });
+
+            // Update the active state for navigation links
+            navLinks.forEach(link => {
+              const targetContent = link.getAttribute('onclick')?.match(/showContent\('(\w+)'\)/)?.[1];
+              if (targetContent === contentId) {
+                link.classList.add('nav-active');
+              } else {
+                link.classList.remove('nav-active');
+              }
+            });
+          }
+
+          document.addEventListener('DOMContentLoaded', () => {
+            checkLoginStatus();
+            checkNewUserStatus(); // Check and show the popup if the user is new
+            showContent('defaultContent'); // Ensure the default content is active on load
+          });
+        </script>
+        <!-- Dashboard Content -->
+        <div id="dashboardContent" class="hidden mt-8">
+          <h1 class="section-heading text-center mb-6">
+            Dashboard
+          </h1>
+          <p class="text-sm leading-relaxed mb-8">
+            Access your personalized dashboard to track your farm's performance, monitor key metrics, and make data-driven decisions.
+          </p>
+          <ul class="list-disc list-inside text-left text-sm leading-relaxed mb-8">
+            <li>
+              View real-time data on crop health, soil conditions, and weather forecasts.
+            </li>
+            <li>
+              Analyze historical trends to improve future planning and decision-making.
+            </li>
+            <li>
+              Track equipment usage and maintenance schedules to reduce downtime.
+            </li>
+            <li>
+              Monitor financial performance, including revenue, expenses, and profitability.
+            </li>
+            <li>
+              Generate detailed reports to share with stakeholders and investors.
+            </li>
+          </ul>
+          <a class="bg-green-700 text-white py-3 px-6 rounded-full text-sm" onclick="redirectToDashboard()">
+            Go to Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer mt-8">
+    <p>&copy; 2024 AgriNova. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </div>
+<!-- New User Popup -->
+  <div id="newUserPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 max-h-[90vh] overflow-y-auto">
+      <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Welcome! Tell us about yourself</h2>
+      <form id="newUserForm" class="space-y-4">
+        <!-- Primary Crop -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">What is your primary crop currently?</span>
+          <input 
+            type="text" 
+            id="primaryCrop" 
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black" 
+            placeholder="e.g., Corn, Wheat" 
+            required 
+            aria-label="Primary crop" />
+        </label>
+        <!-- Last Season Crop -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">What crop did you grow last season?</span>
+          <input 
+            type="text" 
+            id="lastCropPlanted" 
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black" 
+            placeholder="e.g., Rice" 
+            required 
+            aria-label="Last crop planted" />
+        </label>
+        <!-- Acres -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">How many acres of land do you farm?</span>
+          <input 
+            type="number" 
+            id="farmSize" 
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black" 
+            placeholder="e.g., 50" 
+            required 
+            aria-label="Farm size in acres" />
+        </label>
+        <!-- Soil Type (now text input) -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">What is your soil type?</span>
+          <input 
+            type="text"
+            id="soilType"
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black"
+            placeholder="e.g., Loamy, Sandy, Clayey"
+            required
+            aria-label="Soil type" />
+        </label>
+        <!-- Soil Testing Report (dropdown + conditional file input) -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">Do you have a recent soil testing report?</span>
+          <select 
+            id="soilTestReport" 
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black" 
+            required 
+            aria-label="Soil testing report">
+            <option value="" disabled selected>Select an option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <div id="soilReportUploadContainer" class="hidden">
+          <label class="block">
+            <span class="text-gray-700 font-semibold">Upload your soil testing report (PDF, JPG, PNG):</span>
+            <input 
+              type="file"
+              id="soilReportFile"
+              accept=".pdf,.jpg,.jpeg,.png"
+              class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black"
+              aria-label="Soil report file" />
+          </label>
+        </div>
+        <!-- Irrigation Access (now text input) -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">Describe your irrigation access (e.g., Drip, Flood, None):</span>
+          <input 
+            type="text"
+            id="irrigationAccess"
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black"
+            placeholder="e.g., Drip, Flood, None"
+            required
+            aria-label="Irrigation access" />
+        </label>
+        <!-- Farming Method (dropdown) -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">What is your preferred farming method?</span>
+          <select 
+            id="farmingMethod" 
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black" 
+            required 
+            aria-label="Farming method">
+            <option value="" disabled selected>Select a method</option>
+            <option value="Organic">Organic</option>
+            <option value="Conventional">Conventional</option>
+            <option value="Integrated">Integrated Pest Management</option>
+          </select>
+        </label>
+        <!-- Next Season Planning (now text input) -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">Which season are you planning for next?</span>
+          <input 
+            type="text"
+            id="nextSeason"
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black"
+            placeholder="e.g., Kharif, Rabi, Zaid"
+            required
+            aria-label="Next season" />
+        </label>
+        <!-- Crop Residue Handling (dropdown) -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">Was crop residue left in the field or burned?</span>
+          <select 
+            id="cropResidueHandling" 
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black" 
+            required 
+            aria-label="Crop residue handling">
+            <option value="" disabled selected>Select an option</option>
+            <option value="Left">Left</option>
+            <option value="Burned">Burned</option>
+          </select>
+        </label>
+        <!-- Sunlight Condition (now text input) -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">Describe the sunlight condition on your farm:</span>
+          <input 
+            type="text"
+            id="sunlightCondition"
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black"
+            placeholder="e.g., Full Sun, Partial Shade, Mostly Shade"
+            required
+            aria-label="Sunlight condition" />
+        </label>
+        <!-- Intercropping/Multi-layer Farming (dropdown) -->
+        <label class="block">
+          <span class="text-gray-700 font-semibold">Are you open to intercropping or multi-layer farming techniques?</span>
+          <select 
+            id="intercroppingOpen" 
+            class="w-full mt-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none text-black" 
+            required 
+            aria-label="Intercropping openness">
+            <option value="" disabled selected>Select an option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+        </label>
+        <button 
+          type="submit" 
+          class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+  function checkLoginStatus() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const username = localStorage.getItem('username');
+    const signupButton = document.getElementById('signupButton');
+    const profileButton = document.getElementById('profileButton');
+    const profileUsername = document.getElementById('profileUsername');
+
+    if (isLoggedIn && username) {
+      signupButton.classList.add('hidden');
+      profileButton.classList.remove('hidden');
+      profileUsername.textContent = username;
+    } else {
+      signupButton.classList.remove('hidden');
+      profileButton.classList.add('hidden');
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username');
+    localStorage.removeItem('isNewUser'); // Clear new user status
+    checkLoginStatus();
+    alert('You have been logged out.');
+  }
+
+  document.addEventListener('DOMContentLoaded', checkLoginStatus);
+
+  // Toggle dropdown visibility
+  document.getElementById('profileButton').addEventListener('click', () => {
+    const dropdown = document.getElementById('profileDropdown');
+    dropdown.classList.toggle('hidden');
+  });
+
+  function redirectToDashboard() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    if (isLoggedIn) {
+      // Correct the path to the dashboard file
+      window.location.href = '/frontend/main.html';
+    } else {
+      alert('Please log in to access the dashboard.');
+      window.location.href = '/login/login.html'; // Redirect to login page
+    }
+  }
+
+  function checkNewUserStatus() {
+    const isNewUser = localStorage.getItem('isNewUser') === 'true';
+    const urlParams = new URLSearchParams(window.location.search);
+    const showQuestionnaire = urlParams.get('showQuestionnaire') === 'true';
+
+    if (isNewUser || showQuestionnaire) {
+      const newUserPopup = document.getElementById('newUserPopup');
+      newUserPopup.classList.remove('hidden'); // Show the popup
+      localStorage.setItem('isNewUser', 'false'); // Reset new user status
+    }
+  }
+
+  // Show/hide soil report upload field
+  document.addEventListener('DOMContentLoaded', function() {
+    const soilTestReport = document.getElementById('soilTestReport');
+    const soilReportUploadContainer = document.getElementById('soilReportUploadContainer');
+    if (soilTestReport) {
+      soilTestReport.addEventListener('change', function() {
+        if (soilTestReport.value === 'Yes') {
+          soilReportUploadContainer.classList.remove('hidden');
+        } else {
+          soilReportUploadContainer.classList.add('hidden');
+        }
+      });
+    }
+  });
+
+  // Questionnaire submit handler
+  document.getElementById('newUserForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const username = localStorage.getItem('username');
+    const primaryCrop = document.getElementById('primaryCrop').value;
+    const lastCropPlanted = document.getElementById('lastCropPlanted').value;
+    const farmSize = document.getElementById('farmSize').value;
+    const soilType = document.getElementById('soilType').value;
+    const soilTestReport = document.getElementById('soilTestReport').value;
+    const irrigationAccess = document.getElementById('irrigationAccess').value;
+    const farmingMethod = document.getElementById('farmingMethod').value;
+    const nextSeason = document.getElementById('nextSeason').value;
+    const cropResidueHandling = document.getElementById('cropResidueHandling').value;
+    const sunlightCondition = document.getElementById('sunlightCondition').value;
+    const intercroppingOpen = document.getElementById('intercroppingOpen').value;
+
+    // Prepare form data for file upload if needed
+    let userData;
+    let useFormData = false;
+    if (soilTestReport === 'Yes' && document.getElementById('soilReportFile').files.length > 0) {
+      useFormData = true;
+      userData = new FormData();
+      userData.append('username', username);
+      userData.append('primaryCrop', primaryCrop);
+      userData.append('lastCropPlanted', lastCropPlanted);
+      userData.append('farmSize', farmSize);
+      userData.append('soilType', soilType);
+      userData.append('soilTestReport', soilTestReport);
+      userData.append('irrigationAccess', irrigationAccess);
+      userData.append('farmingMethod', farmingMethod);
+      userData.append('nextSeason', nextSeason);
+      userData.append('cropResidueHandling', cropResidueHandling);
+      userData.append('sunlightCondition', sunlightCondition);
+      userData.append('intercroppingOpen', intercroppingOpen);
+      userData.append('soilReportFile', document.getElementById('soilReportFile').files[0]);
+    } else {
+      userData = { 
+        username, 
+        primaryCrop, 
+        lastCropPlanted,
+        farmSize, 
+        soilType, 
+        soilTestReport,
+        irrigationAccess,
+        farmingMethod, 
+        nextSeason,
+        cropResidueHandling,
+        sunlightCondition,
+        intercroppingOpen
+      };
+    }
+
+    try {
+      let response;
+      if (useFormData) {
+        response = await fetch('http://localhost:5500/api/save-user-data', {
+          method: 'POST',
+          body: userData,
+        });
+      } else {
+        response = await fetch('http://localhost:5500/api/save-user-data', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(userData),
+        });
+      }
+
+      if (response.ok) {
+        // alert('User data saved successfully!');
+        document.getElementById('newUserPopup').classList.add('hidden'); // Close the popup
+        // Removed: showSuggestedCropsPopup();
+        // Optionally redirect or show a success message here
+        alert('Thank you! Your information has been saved.');
+        window.location.href = '/frontend/main.html';
+      } else {
+        const error = await response.json();
+        alert(error.message || 'Failed to save user data.');
+      }
+    } catch (error) {
+      console.error('Error saving user data:', error);
+      alert('An error occurred. Please try again.');
+    }
+  });
+  </script>
+ </body>
+</html>

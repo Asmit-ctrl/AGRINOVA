@@ -1,0 +1,17 @@
+[
+  {
+    "username": "farmer1",
+    "primaryCrop": "Wheat",
+    "lastCropPlanted": "Rice",
+    "farmSize": 50,
+    "soilType": "Loamy",
+    "soilTestReport": "Yes",
+    "irrigationAccess": "Drip",
+    "farmingMethod": "Organic",
+    "nextSeason": "Rabi",
+    "cropResidueHandling": "Left",
+    "sunlightCondition": "Full Sun",
+    "intercroppingOpen": "Yes",
+    "selectedCrops": ["Wheat", "Barley"]
+  }
+]

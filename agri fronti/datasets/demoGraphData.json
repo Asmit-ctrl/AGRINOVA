@@ -1,0 +1,38 @@
+{
+  "waterUsage": {
+    "labels": ["Week 1", "Week 2", "Week 3", "Week 4"],
+    "data": [1200, 1500, 1100, 1400]
+  },
+  "equipmentUsage": {
+    "labels": ["Tractor A", "Harvester B", "Plow C", "Seeder D"],
+    "data": [40, 35, 20, 25]
+  },
+  "productionOverview": {
+    "labels": ["Wheat", "Corn", "Rice"],
+    "data": [400, 300, 200]
+  },
+  "cropYield": {
+    "labels": ["Corn", "Wheat", "Rice"],
+    "data": [1000, 800, 600]
+  },
+  "monthlyYield": {
+    "labels": ["January", "February", "March", "April", "May", "June"],
+    "data": [100, 120, 150, 170, 200, 220]
+  },
+  "fieldMetrics": {
+    "labels": ["PH Level", "Temperature (°C)", "Water Level (liters)"],
+    "data": [5, 26, 1060]
+  },
+  "revenueTrends": {
+    "labels": ["January", "February", "March", "April", "May", "June"],
+    "data": [5000, 7000, 8000, 10000, 12000, 15000]
+  },
+  "growthStatus": {
+    "labels": ["Corn", "Wheat", "Rice"],
+    "data": [85, 90, 80]
+  },
+  "upcomingHarvests": {
+    "labels": ["Corn", "Wheat", "Rice"],
+    "data": [15, 20, 10]
+  }
+}
